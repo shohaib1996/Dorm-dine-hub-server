@@ -1,5 +1,6 @@
 const express = require('express');
 const connectToDb = require('./db/connectToDb')
+const applyMiddleware = require("./middlewares/applyMiddleware")
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 5000;
@@ -9,7 +10,7 @@ const mealsRoutes = require("./routes/meals/index")
 
 
 
-
+applyMiddleware(app)
 app.use(mealsRoutes)
 
 

@@ -16,7 +16,7 @@ const MealSchema = new Schema({
         required: true
       },
       ingredients: {
-        type: String,
+        type: Array,
         required: true
       },
       description: {
