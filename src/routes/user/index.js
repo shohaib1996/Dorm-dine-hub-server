@@ -9,8 +9,10 @@ router.post("/users", async(req, res) => {
     res.send(savedUser)
 })
 router.get("/users", async(req, res) => {
-    const email = req.query.email
-    const query = {email: email}
+    let query = {};
+    if (req.query.email) {
+        query = { email: req.query.email };
+    }
     const result = await User.find(query)
     res.send(result)
 })
