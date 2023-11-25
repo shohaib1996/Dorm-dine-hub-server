@@ -7,11 +7,15 @@ const port = process.env.PORT || 5000;
 
 // routes
 const mealsRoutes = require("./routes/meals/index")
+const paymentRoutes = require("./routes/payment/index")
+const userRoutes = require("./routes/user/index")
 
 
 
 applyMiddleware(app)
 app.use(mealsRoutes)
+app.use(paymentRoutes)
+app.use(userRoutes)
 
 
 app.get("/health", (req, res) => {
