@@ -50,6 +50,9 @@ const MealSchema = new Schema({
       adminEmail: {
         type: String,
         required: true
+      },
+      liked: {
+        type: Boolean
       }
 })
 
