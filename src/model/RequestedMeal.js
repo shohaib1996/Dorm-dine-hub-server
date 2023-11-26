@@ -1,8 +1,6 @@
 const { Schema, default: mongoose} = require("mongoose");
 
-
-
-const MealSchema = new Schema({
+const RequestMealSchema =  new Schema({
     mealTitle: {
         type: String,
         required: true
@@ -53,8 +51,16 @@ const MealSchema = new Schema({
       },
       liked: {
         type: Boolean
+      },
+      status: {
+        type: String,
+        required: true
+      },
+      user_email: {
+        type: String,
+        required: true
       }
-})
 
-const Meal = mongoose.model("Meal", MealSchema)
-module.exports = Meal
+})
+const RequestMeal = mongoose.model('requestMeal', RequestMealSchema)
+module.exports = RequestMeal
