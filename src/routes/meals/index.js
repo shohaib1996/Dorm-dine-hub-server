@@ -43,5 +43,16 @@ router.put("/meals/:id", async (req, res) => {
     })
     res.send({result, modifiedCount: 1});
 })
+router.patch("/meals/:id", async(req, res) => {
+    const id = req.params.id
+    const updatedData = req.body
+    const result = await Meal.findByIdAndUpdate({_id: id},{
+        $set: {
+            reviews: updatedData.reviews,
+            rating: updatedData.rating
+        }
+    })
+    res.send({result, modifiedCount: 1});
+})
 
 module.exports = router

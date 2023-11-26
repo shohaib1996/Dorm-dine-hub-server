@@ -21,7 +21,8 @@ router.put("/users/:id", async (req, res) => {
     const updatedKey = req.body
     const result = await User.findByIdAndUpdate({ _id: id }, {
         $set: {
-            badge: updatedKey.badge
+            badge: updatedKey.badge,
+            badge_image: updatedKey.badge_image
         }
     })
     res.send({result, modifiedCount: 1});
