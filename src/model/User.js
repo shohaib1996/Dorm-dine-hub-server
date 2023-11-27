@@ -20,6 +20,9 @@ const userSchema = new Schema({
     badge_image: {
         type: String,
         required: true
+    },
+    role: {
+        type: String
     }
 });
 

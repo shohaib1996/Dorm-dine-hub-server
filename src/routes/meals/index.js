@@ -2,6 +2,15 @@ const express = require("express");
 const Meal = require('../../model/Meal')
 const router = express.Router()
 
+
+
+router.post("/meals", async(req, res) => {
+    const mealData = req.body
+    const newMealData = new Meal(mealData)
+    const result = await newMealData.save() 
+    res.send({ result, insertedId: result._id })
+})
+
 router.get("/meals", async (req, res) => {
     const {search, category, sort} = req.query
     // console.log(sort);
