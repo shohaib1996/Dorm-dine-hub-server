@@ -10,8 +10,14 @@ router.post('/upcoming-meals', async(req, res) => {
     res.send({result, insertedId: result._id})
 })
 router.get("/upcoming-meals", async(req, res) => {
-    const result = await UpcomingMeal.find()
+    const result = await UpcomingMeal.find().sort({likes: -1})
     res.send(result)
+})
+
+router.delete("/upcoming-meals/:id", async(req, res) => {
+    const id = req.params.id
+    const result = await UpcomingMeal.findOneAndDelete({ _id: id })
+    res.send({ result, deletedCount: 1 })
 })
 
 

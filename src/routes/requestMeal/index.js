@@ -9,9 +9,15 @@ router.post("/request-meals", async (req, res) => {
     res.send({ result, insertedId: result._id })
 })
 router.get("/request-meals", async (req, res) => {
-    let query = {}
-    if (req.query.email) {
-        query = { user_email: req.query.email }
+   
+    const {username, email} = req.query
+    // console.log(email);
+    let query = {};
+    if (email) {
+        query = { user_email: { $regex: new RegExp(email, 'i') } };
+    }
+    if(username){
+        query = { user_name: { $regex: new RegExp(username, 'i') } };
     }
     const pageNumber = parseInt(req.query.page) || 0;
     const perPage = 10

@@ -9,9 +9,14 @@ router.post("/users", async(req, res) => {
     res.send(savedUser)
 })
 router.get("/users", async(req, res) => {
+    const {username, email} = req.query
+    console.log(email);
     let query = {};
-    if (req.query.email) {
-        query = { email: req.query.email };
+    if (email) {
+        query = { email: { $regex: new RegExp(email, 'i') } };
+    }
+    if(username){
+        query = { name: { $regex: new RegExp(username, 'i') } };
     }
     // const result = await User.find(query)
     
@@ -51,18 +56,7 @@ router.patch("/users/admin/:id", async(req, res) => {
 
 
 
-// if (req.query.email || req.query.username) {
-//     query.$or = [];
 
-//     if (req.query.email) {
-//         query.$or.push({ email: req.query.email });
-//     }
-
-//     if (req.query.username) {
-//         // Assuming your User model has a 'username' field
-//         query.$or.push({ username: req.query.username });
-//     }
-// }
 
 
 
