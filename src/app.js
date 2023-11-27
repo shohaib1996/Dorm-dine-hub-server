@@ -11,6 +11,7 @@ const paymentRoutes = require("./routes/payment/index")
 const userRoutes = require("./routes/user/index")
 const requestedMealsRoutes = require("./routes/requestMeal/index")
 const reviewsRoutes = require("./routes/reviews/index")
+const upcomingRoutes = require("./routes/upcomingMeals/index")
 
 
 
@@ -20,6 +21,7 @@ app.use(paymentRoutes)
 app.use(userRoutes)
 app.use(requestedMealsRoutes)
 app.use(reviewsRoutes)
+app.use(upcomingRoutes)
 
 
 app.get("/health", (req, res) => {
