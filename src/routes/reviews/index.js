@@ -17,12 +17,15 @@ router.get("/reviews", async (req, res) => {
         query = { email: req.query.email }
     }
     // const result = await Review.find(query)
+    const sortField = req.query.sortBy === 'likes' ? 'likes' : 'reviews';
+    // const sortOrder = req.query.order === 'desc' ? -1 : 1;
     const count = await Review.countDocuments(query)
     const pageNumber = parseInt(req.query.page) || 0;
     const perPage = 10
     const skip = parseFloat(pageNumber * perPage)
     const result = await Review.aggregate([
         { $match: query },
+        { $sort: { [sortField]: -1 } },
         { $skip: skip },
         { $limit: perPage },
     ])

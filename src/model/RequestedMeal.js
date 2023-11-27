@@ -59,6 +59,10 @@ const RequestMealSchema =  new Schema({
       user_email: {
         type: String,
         required: true
+      },
+      user_name: {
+        type: String,
+        required: true
       }
 
 })

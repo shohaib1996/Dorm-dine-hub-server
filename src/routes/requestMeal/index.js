@@ -26,6 +26,19 @@ router.get("/request-meals", async (req, res) => {
 
     res.send({data: result, count})
 })
+router.patch('/request-meals/:id', async(req, res) => {
+    const id = req.params.id
+    const updatedMeal = req.body
+    const result = await RequestMeal.findByIdAndUpdate({_id: id}, {
+        $set: {
+            status: updatedMeal.status
+        }
+    })
+    res.send({result, modifiedCount: 1})
+
+})
+
+
 // router.get("/request-meals/:email", async (req, res) => {
 //     const email = req.params.email
 //     const query = { user_email: email }
