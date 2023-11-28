@@ -6,22 +6,26 @@ const app = express()
 const port = process.env.PORT || 5000;
 
 // routes
+
 const mealsRoutes = require("./routes/meals/index")
 const paymentRoutes = require("./routes/payment/index")
 const userRoutes = require("./routes/user/index")
 const requestedMealsRoutes = require("./routes/requestMeal/index")
 const reviewsRoutes = require("./routes/reviews/index")
 const upcomingRoutes = require("./routes/upcomingMeals/index")
+const authenticationRoutes = require("./routes/authentication/index")
 
 
 
 applyMiddleware(app)
+
 app.use(mealsRoutes)
 app.use(paymentRoutes)
 app.use(userRoutes)
 app.use(requestedMealsRoutes)
 app.use(reviewsRoutes)
 app.use(upcomingRoutes)
+app.use(authenticationRoutes)
 
 
 app.get("/health", (req, res) => {

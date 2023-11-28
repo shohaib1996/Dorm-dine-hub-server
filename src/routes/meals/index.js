@@ -12,7 +12,7 @@ router.post("/meals", async (req, res) => {
 })
 
 router.get("/meals", async (req, res) => {
-    const { search, category, sort } = req.query
+    const { search, category, sort, admin } = req.query
     // console.log(sort);
     let query = {};
     if (search) {
@@ -20,6 +20,9 @@ router.get("/meals", async (req, res) => {
     }
     if (category) {
         query = { mealType: { $regex: new RegExp(category, 'i') } };
+    }
+    if (admin) {
+        query = { admin_Email: { $regex: new RegExp(admin, 'i') } };
     }
     const options = {};
     if (sort) {
