@@ -50,7 +50,7 @@ const UpcomingMealSchema = new Schema({
         required: true
       },
       liked: {
-        type: Boolean
+        type: Array
       }
 })
 

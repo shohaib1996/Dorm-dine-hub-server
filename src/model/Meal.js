@@ -52,7 +52,7 @@ const MealSchema = new Schema({
         required: true
       },
       liked: {
-        type: Boolean
+        type: Array
       }
 })
 

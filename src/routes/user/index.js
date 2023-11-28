@@ -9,7 +9,7 @@ router.post("/users", async(req, res) => {
     res.send(savedUser)
 })
 router.get("/users", async(req, res) => {
-    const {username, email} = req.query
+    const {username, email, role} = req.query
     console.log(email);
     let query = {};
     if (email) {
@@ -17,6 +17,9 @@ router.get("/users", async(req, res) => {
     }
     if(username){
         query = { name: { $regex: new RegExp(username, 'i') } };
+    }
+    if(role){
+        query = { role: { $regex: new RegExp(role, 'i') } };
     }
     // const result = await User.find(query)
     
@@ -53,6 +56,7 @@ router.patch("/users/admin/:id", async(req, res) => {
     })
     res.send({result, modifiedCount: 1})
 })
+
 
 
 

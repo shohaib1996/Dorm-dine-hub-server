@@ -43,6 +43,11 @@ router.patch('/request-meals/:id', async(req, res) => {
     res.send({result, modifiedCount: 1})
 
 })
+router.delete("/request-meals/:id", async(req, res) => {
+    const id = req.params.id
+    const result = await RequestMeal.findOneAndDelete({_id: id})
+    res.send({result, deletedCount: 1})
+})
 
 
 // router.get("/request-meals/:email", async (req, res) => {

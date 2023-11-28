@@ -32,6 +32,10 @@ router.get("/meals", async (req, res) => {
             price: sort === 'asc' ? 1 : -1
         };
     }
+    // const pageNumber = parseInt(page) || 0;
+    // const perPage = 10;
+    // const skip = pageNumber * perPage;
+    //.skip(skip).limit(perPage)
     const result = await Meal.find(query, null, options);
 
     res.send(result)

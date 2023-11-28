@@ -13,12 +13,25 @@ router.get("/upcoming-meals", async(req, res) => {
     const result = await UpcomingMeal.find().sort({likes: -1})
     res.send(result)
 })
+router.put("/upcoming-meals/:id", async(req, res) => {
+    const id = req.params.id
+    const updatedDoc = req.body
+    const result = await UpcomingMeal.findByIdAndUpdate({_id: id}, {
+        $set: {
+            liked: updatedDoc.liked,
+            likes: updatedDoc.likes
+        }
+    })
+    res.send({ result, modifiedCount: 1 })
+
+})
 
 router.delete("/upcoming-meals/:id", async(req, res) => {
     const id = req.params.id
     const result = await UpcomingMeal.findOneAndDelete({ _id: id })
     res.send({ result, deletedCount: 1 })
 })
+
 
 
 
