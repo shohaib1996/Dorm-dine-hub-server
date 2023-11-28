@@ -44,11 +44,12 @@ app.use((err, req, res, next)=> {
     })
 })
 
-const main = async() => {
-    await connectToDb()
-    app.listen(port, () => {
-        console.log(`dormDineHub is running on port ${port}`)
-    })
-}
+// const main = async() => {
+//     await connectToDb()
+//     app.listen(port, () => {
+//         console.log(`dormDineHub is running on port ${port}`)
+//     })
+// }
 
-main()
+// main()
+module.exports = app
