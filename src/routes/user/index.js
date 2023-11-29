@@ -1,5 +1,7 @@
 const express = require("express");
 const User = require("../../model/User")
+const verifyToken = require('../../middlewares/verifyToken')
+
 const router = express.Router()
 
 router.post("/users", async(req, res) => {
@@ -8,7 +10,7 @@ router.post("/users", async(req, res) => {
     const savedUser = await newUser.save()
     res.send(savedUser)
 })
-router.get("/users", async(req, res) => {
+router.get("/users", verifyToken, async(req, res) => {
     const {username, email, role} = req.query
     console.log(email);
     let query = {};
