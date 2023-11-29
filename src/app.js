@@ -14,6 +14,7 @@ const requestedMealsRoutes = require("./routes/requestMeal/index")
 const reviewsRoutes = require("./routes/reviews/index")
 const upcomingRoutes = require("./routes/upcomingMeals/index")
 const authenticationRoutes = require("./routes/authentication/index")
+const aboutRoutes = require("./routes/about/index")
 
 
 
@@ -26,6 +27,7 @@ app.use(requestedMealsRoutes)
 app.use(reviewsRoutes)
 app.use(upcomingRoutes)
 app.use(authenticationRoutes)
+app.use(aboutRoutes)
 
 
 app.get("/health", (req, res) => {

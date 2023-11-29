@@ -12,7 +12,7 @@ router.post("/meals", async (req, res) => {
 })
 
 router.get("/meals", async (req, res) => {
-    const { search, category, sort, admin } = req.query
+    const { search, category, sort, admin} = req.query
     // console.log(sort);
     let query = {};
     if (search) {
@@ -36,10 +36,10 @@ router.get("/meals", async (req, res) => {
         };
     }
     // const pageNumber = parseInt(page) || 0;
-    // const perPage = 10;
+    // const perPage = 8;
     // const skip = pageNumber * perPage;
     //.skip(skip).limit(perPage)
-    const result = await Meal.find(query, null, options);
+    const result = await Meal.find(query, null, options)
 
     res.send(result)
 })
