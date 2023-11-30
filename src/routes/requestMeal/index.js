@@ -1,5 +1,6 @@
 const express = require("express");
 const RequestMeal = require('../../model/RequestedMeal')
+const verifyToken = require('../../middlewares/verifyToken')
 const router = express.Router()
 
 router.post("/request-meals", async (req, res) => {
@@ -43,7 +44,7 @@ router.patch('/request-meals/:id', async(req, res) => {
     res.send({result, modifiedCount: 1})
 
 })
-router.delete("/request-meals/:id", async(req, res) => {
+router.delete("/request-meals/:id", verifyToken, async(req, res) => {
     const id = req.params.id
     const result = await RequestMeal.findOneAndDelete({_id: id})
     res.send({result, deletedCount: 1})
